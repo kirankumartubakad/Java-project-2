@@ -1,6 +1,6 @@
 pipeline {
     agent {
-  label 'master'
+  label 'java'
     }
     stages{
         stage('get code') {
@@ -18,7 +18,6 @@ pipeline {
             }
         }
         stage("build & SonarQube analysis") {
-            agent any
             steps {
               withSonarQubeEnv('sonaqube-8.9.9') {
                 sh 'mvn clean package sonar:sonar'
